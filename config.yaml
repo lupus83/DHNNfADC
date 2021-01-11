@@ -1,0 +1,50 @@
+exp_name: ""  # name of experiment folder
+  
+# Hyperparams:
+n_epochs: 50
+optimizer: 'AdamW'
+learning_rates: [0.0001, 0.001, 0.01]
+weight_decay: [0.0, 0.01]
+batch_size: [256]
+betas: [0.9, 0.999]
+
+# Model Related:
+model_type: 'SENet'
+model_args:
+  n_outputs: 3
+  n_basefilters: 8
+bn_momentum: [0.1]
+pretrain:
+  dir: # PATH RERMOVED FOR PRIVACY
+  ags:
+    lr_: 0.001
+    WD_: 0.01
+block_grads: False
+
+
+
+# Data Related:
+masking: ['vol_with_bg']  #, "vol_without_bg", "mask", "concat"]
+label_coding:  # ADNI: {"CN": 0, "MCI": 1, "Dementia": 2}. AIBL: {"NL": 0, "MCI": 1, "AD": 2}
+  CN: 0
+  MCI: 1
+  Dementia: 2
+test_size: [0.2]
+hippocampus: 'Left-Hippocampus'
+dim: 64  # size of volume
+use_heterogeneous_set: True
+normalize_non_image_data: [False]
+filter_unreliable_data: True
+filter_by_visitcodes: True
+augment_train_set: True
+augment_val_set: False
+shuffle_train_set: True
+shuffle_val_set: False
+# np.random.randint(1, 79797, 5) -> [3707, 11730, 22229, 42732, 57446]
+seeds: [3707, 11730, 22229, 42732, 57446]
+
+# Paths to DataSets:
+path_to_image_data: # PATH RERMOVED FOR PRIVACY
+path_to_non_image_data: # PATH RERMOVED FOR PRIVACY
+
+# COMMENTS:
